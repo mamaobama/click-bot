@@ -1,12 +1,1 @@
-const { chromium } = require('playwright');
-
-(async () => {
-  const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage();
-
-  await page.goto('https://YOUR-WEBSITE.com');
-
-  await page.click('BUTTON_SELECTOR');
-
-  await browser.close();
-})();
+console.log("Bot is running successfully on Render");
