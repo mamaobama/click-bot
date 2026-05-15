@@ -1,16 +1,21 @@
+const puppeteer = require("puppeteer");
+
 console.log("Bot started:", new Date());
 
-fetch("YOUR_RENEW_API_URL_HERE", {
-  method: "POST", // or GET depending on site
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": "Bearer YOUR_TOKEN"
-  }
-})
-.then(res => res.text())
-.then(data => {
-  console.log("Renew result:", data);
-})
-.catch(err => {
-  console.log("Error:", err);
-});
+async function run() {
+  const browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"]
+  });
+
+  const page = await browser.newPage();
+
+  await page.goto("YOUR_WEBSITE_URL");
+
+  await page.click("YOUR_BUTTON_SELECTOR");
+
+  console.log("Button clicked:", new Date());
+
+  await browser.close();
+}
+
+run();
